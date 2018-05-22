@@ -101,6 +101,7 @@ public class UserDaoImplementation implements UserDAO {
 			session.close();
 		}
 	}
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<User> getUserByType(UserType type) {
 		List<User> users = new ArrayList<>();

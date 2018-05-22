@@ -24,6 +24,7 @@ import es.upm.dit.isst.bookadvisor.dao.model.User;
 import es.upm.dit.isst.bookadvisor.dao.model.UserType;
 
 
+@SuppressWarnings("serial")
 @MultipartConfig
 @WebServlet("/newBookServlet")
 public class newBookServlet extends HttpServlet{

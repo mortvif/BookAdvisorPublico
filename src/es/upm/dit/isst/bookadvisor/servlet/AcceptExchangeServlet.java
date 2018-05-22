@@ -1,7 +1,6 @@
 package es.upm.dit.isst.bookadvisor.servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,17 +9,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import es.upm.dit.isst.bookadvisor.dao.BookDaoImplementation;
+import es.upm.dit.isst.bookadvisor.dao.ExchangeDaoImplementation;
 import es.upm.dit.isst.bookadvisor.dao.UserDaoImplementation;
-import es.upm.dit.isst.bookadvisor.dao.model.Book;
+import es.upm.dit.isst.bookadvisor.dao.model.Exchange;
 import es.upm.dit.isst.bookadvisor.dao.model.User;
+import es.upm.dit.isst.bookadvisor.dao.model.UserType;
 
-@WebServlet("/index")
-public class IndexServlet extends HttpServlet{
-
+@SuppressWarnings("serial")
+@WebServlet("/AcceptExchangeServlet")
+public class AcceptExchangeServlet extends HttpServlet{
+	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("GET index");
+		
+		String id = req.getParameter("exchange_id");
 		
 		// Get Cookies
 		User u = null;
@@ -32,28 +34,30 @@ public class IndexServlet extends HttpServlet{
 				}
 			}
 			
-			if(u == null ) {
+			if(u == null) {
 				// No hay usuario logeado
-				System.out.println("No hay usuario logueado");
+				resp.sendRedirect(req.getContextPath() + "/index.jsp");
 			} else {
-				// Hay usuario logueado 
-				System.out.println("Username logueado: " +u.getUsername());
+				if(u.getRole() == UserType.READER) {
+					
+					Exchange e = ExchangeDaoImplementation.getInstance().getExchange(id);
+					if(e != null) {
+						e.setAccepter(u);
+						ExchangeDaoImplementation.getInstance().updateExchange(e);						
+					}
+					
+					resp.sendRedirect(req.getContextPath() + "/ProfileServlet");
+					
+				} else {
+					resp.sendRedirect(req.getContextPath() + "/index");
+				}
 			}
 				
 		} else {
 			// No hay usuario logeado
-			System.out.println("No hay usuario logueado");
+			resp.sendRedirect(req.getContextPath() + "/index");
 		}
 		
-		List<Book> newbooks = BookDaoImplementation.getInstance().readNewBooks(5);
-		List<Book> bestbooks = BookDaoImplementation.getInstance().readBestBooks(5);
-		
-		
-		req.getSession().setAttribute("publisher_books", newbooks);
-		req.getSession().setAttribute("best_books", bestbooks);
-		req.getSession().setAttribute("user", u);
-		resp.sendRedirect(req.getContextPath()+"/index.jsp");
 	}
 	
 }
-	

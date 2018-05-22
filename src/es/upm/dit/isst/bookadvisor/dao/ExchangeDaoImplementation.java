@@ -6,32 +6,29 @@ import java.util.List;
 import org.hibernate.Session;
 
 import es.upm.dit.isst.bookadvisor.dao.model.Book;
-import es.upm.dit.isst.bookadvisor.dao.model.Review;
+import es.upm.dit.isst.bookadvisor.dao.model.Exchange;
 import es.upm.dit.isst.bookadvisor.dao.model.User;
-import es.upm.dit.isst.bookadvisor.dao.SessionFactoryService;
 
-public class ReviewDaoImplementation implements ReviewDao {
+public class ExchangeDaoImplementation implements ExchangeDao {
+
 	
-	private static ReviewDaoImplementation instance = null;
-	private ReviewDaoImplementation() {
-		// TODO Auto-generated constructor stub
-	}
-	public static ReviewDaoImplementation getInstance() {
-		if(null == instance) {
-			instance = new ReviewDaoImplementation();
+	private static ExchangeDaoImplementation instance = null;
+	private ExchangeDaoImplementation() {};
+	public static ExchangeDaoImplementation getInstance() {
+		if( null == instance) {
+			instance = new ExchangeDaoImplementation();
 		}
 		
 		return instance;
 	}
 	
-
 	@Override
-	public Review getReview(String id) {
+	public Exchange getExchange(String id) {
 		Session session = SessionFactoryService.get().openSession();
-		Review review = null;
+		Exchange exchange = null;
 		try {
 			session.beginTransaction();
-			review = (Review) session.createQuery("select r from Review r where r.id= :id")
+			exchange = (Exchange) session.createQuery("select e from Exchange e where e.id= :id")
 					.setParameter("id", id)
 					.uniqueResult();
 			session.getTransaction().commit();
@@ -41,71 +38,81 @@ public class ReviewDaoImplementation implements ReviewDao {
 			session.close();
 		}
 		
-		return review;
+		return exchange;
+	}
+
+	@Override
+	public List<Exchange> getUserExchanges(User u) {
+		List<Exchange> exchanges = new ArrayList<>();
+		Session session = SessionFactoryService.get().openSession();
+		try {
+			session.beginTransaction();
+			exchanges.addAll(session.createQuery("select e from Exchange e where e.requester = :user or e.accepter = :user").setParameter("user", u).list());
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// manejar excepciones
+		} finally {
+			session.close();
+		}
+		return exchanges;
 	}
 	
 	@Override
-	public void createReview(Review review) {
+	public List<User> getBookRequesters(Book book) {
+		List<User> requesters = new ArrayList<>();
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			session.save(review);
+			requesters.addAll(session.createQuery("select requester from Exchange e where e.bookRequested = :book").setParameter("book", book).list());
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			// manejar excepciones
 		} finally {
 			session.close();
 		}
-		
+		return requesters;
 	}
 
 	@Override
-	public void updateReview(Review review) {
+	public void createExchange(Exchange exchange) {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			session.saveOrUpdate(review);
+			session.save(exchange);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			// manejar excepciones
 		} finally {
 			session.close();
 		}
-		
 	}
 
 	@Override
-	public void deleteReview(Review review) {
+	public void updateExchange(Exchange exchange) {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			session.delete(review);
+			session.saveOrUpdate(exchange);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			// manejar excepciones
 		} finally {
 			session.close();
 		}
-		
 	}
+
 	@Override
-	public List<Review> getUserReviews(User u) {
-		List<Review> reviews = new ArrayList<>();
+	public void deleteExchange(Exchange exchange) {
 		Session session = SessionFactoryService.get().openSession();
 		try {
 			session.beginTransaction();
-			reviews.addAll(session.createQuery(
-					"select r from Review r where r.author= :user")
-					.setParameter("user", u)
-					.getResultList());
+			session.delete(exchange);
 			session.getTransaction().commit();
 		} catch (Exception e) {
 			// manejar excepciones
 		} finally {
 			session.close();
 		}
-
-		return reviews;
 	}
 
 }

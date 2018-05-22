@@ -30,7 +30,7 @@
            placeholder="ficcion/no ficcion;" size="44" required>
 
     <div class="block clear">
-        <label for="comment">Resumen/Sinopsis: <span>*</span></label>
+        <label for="comment">Reseña <span>*</span></label>
         <textarea name="comment" id="comment" cols="64" rows="15" required></textarea>
     </div>
     <div>

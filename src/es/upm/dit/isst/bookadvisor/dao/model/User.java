@@ -14,6 +14,9 @@ public class User implements Serializable{
 	private String address;
 	private UserType role;
 	private String cookie;
+
+	// Profile pic is stored in file system. Path image is saved in db
+	private String profilePicPath;
 	
 	public User(){}
 
@@ -66,9 +69,19 @@ public class User implements Serializable{
 	}
 	
 	
+	public String getProfilePicPath() {
+		return profilePicPath;
+	}
+
+	public void setProfilePicPath(String profilePicPath) {
+		this.profilePicPath = profilePicPath;
+	}
+
 	public boolean isReader() {
 		return this.role == UserType.READER;
 	}
+	
+	
 	
 	
 }

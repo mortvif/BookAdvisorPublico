@@ -18,6 +18,7 @@
 		<mapping class="es.upm.dit.isst.bookadvisor.dao.model.Book" />
 		<mapping class="es.upm.dit.isst.bookadvisor.dao.model.Review" />
 		<mapping class="es.upm.dit.isst.bookadvisor.dao.model.User" />
+		<mapping class="es.upm.dit.isst.bookadvisor.dao.model.Exchange" />
 		
 	</session-factory>
 </hibernate-configuration>

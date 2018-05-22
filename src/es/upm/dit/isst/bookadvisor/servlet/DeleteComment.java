@@ -4,28 +4,26 @@ import java.io.IOException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@SuppressWarnings("serial")
-@WebServlet("/LogoutServlet")
-public class LogoutServlet extends HttpServlet{
-	
+import es.upm.dit.isst.bookadvisor.dao.ReviewDaoImplementation;
+import es.upm.dit.isst.bookadvisor.dao.model.Review;
+
+@WebServlet("/DeleteComment")
+public class DeleteComment extends HttpServlet{
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		// Remove cookie
-		Cookie c = new Cookie("bookadvisorUser", "");
-		resp.addCookie(c);
+		String id = req.getParameter("reviewid");
 		
-		req.getSession().setAttribute("user", null);
-		req.getSession().setAttribute("user_exchanges", null);
-		resp.sendRedirect(req.getContextPath()+"/index.jsp");
+		Review r = ReviewDaoImplementation.getInstance().getReview(id);
+		ReviewDaoImplementation.getInstance().deleteReview(r);
 		
+		resp.sendRedirect(req.getContextPath() + "/ProfileServlet");
 		
 	}
-	
 	
 }

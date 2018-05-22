@@ -15,6 +15,7 @@ import es.upm.dit.isst.bookadvisor.dao.UserDaoImplementation;
 import es.upm.dit.isst.bookadvisor.dao.model.Book;
 import es.upm.dit.isst.bookadvisor.dao.model.User;
 
+@SuppressWarnings("serial")
 @WebServlet("/AdvancedSearchServlet")
 public class AdvancedSearchServlet extends HttpServlet{
 	

@@ -6,7 +6,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">Ã—</span><span
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span><span
                             class="sr-only">Cerrar</span></button>
                     <h4 class="modal-title" id="myModalLabel">Login</h4>
                 </div>
@@ -32,14 +32,14 @@
                     <input type="checkbox" value="rememberme" id="rememberme"
                            style="display: inline; margin-left: 300px;"> Recordarme<br/><br/>
 
-                    <a href="#">Â¿Olvidaste la contraseÃ±a?</a>
+                    <a href="#">¿Olvidaste la contraseña?</a>
 
                 </div>
 
                 <div class="modal-footer">
                     <h4 class="modal-title" id="myModalLabel">Crear cuenta</h4>
-                    Si no eres miembro todavÃ­a<a data-toggle="modal" data-target="#signup" data-dismiss="modal">
-                    regÃ­strate aquÃ­</a>
+                    Si no eres miembro todavia<a data-toggle="modal" data-target="#signup" data-dismiss="modal">
+                    regi­strate aqui­</a>
                     <!--<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>-->
                 </div>

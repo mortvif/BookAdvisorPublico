@@ -11,6 +11,7 @@ public interface BookDao {
 	public List<Book> readBooksBasicSearch(String searchparameter);
 	public List<Book> readBooksAdvancedSearch(String title, String author, String isbn, String publisher);
 	public List<Book> readNewBooks(int nBooks);
+	public List<Book> readBestBooks(int nBooks);
 	public void updateBook(Book book);
 	public void deleteBook(Book book);
 }

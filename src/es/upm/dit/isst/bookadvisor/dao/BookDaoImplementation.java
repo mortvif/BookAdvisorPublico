@@ -163,6 +163,31 @@ public class BookDaoImplementation implements BookDao {
 
 		return books;
 	}
+
+	@Override
+	public List<Book> readBestBooks(int nBooks) {
+		List<Book> books = new ArrayList<>();
+		Session session = SessionFactoryService.get().openSession();
+		try {
+			session.beginTransaction();
+			books.addAll(session.createQuery(
+					"select b from Book b order by rating desc")
+					.setMaxResults(nBooks)
+					.getResultList());
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			// manejar excepciones
+		} finally {
+			session.close();
+		}
+
+//		System.out.println("LIBROS CONSULTA BOOKS");
+//		for(Book b: books) {
+//			System.out.println(b.getTitle()+" -> "+b.getRating());
+//		}
+		
+		return books;
+	}
 	
 	
 

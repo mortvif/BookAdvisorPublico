@@ -1,6 +1,6 @@
 <form class="form-horizontal" method="get" action="AdvancedSearchServlet" accept-charset="utf-8">
     <div>
-        <label class="control-label" for="BusquedasTitulo">Título</label>
+        <label class="control-label" for="BusquedasTitulo">título</label>
         <div class="controls">
             <input name="titulo" type="text" value="" id="BusquedasTitulo" size="32">
         </div>

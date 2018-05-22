@@ -1,9 +1,6 @@
 package es.upm.dit.isst.bookadvisor.servlet;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,6 +13,7 @@ import es.upm.dit.isst.bookadvisor.dao.UserDaoImplementation;
 import es.upm.dit.isst.bookadvisor.dao.model.User;
 
 
+@SuppressWarnings("serial")
 @WebServlet("/login")
 public class LoginServlet extends HttpServlet {
        

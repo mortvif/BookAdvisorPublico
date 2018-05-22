@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Book implements Serializable{
@@ -19,6 +23,7 @@ public class Book implements Serializable{
 	private String title;
 	private String author;
 	private String publisher;
+	@Column(columnDefinition = "TEXT")
 	private String synopsis;
 	private Date publishDate;
 	private BookFormat format;
@@ -41,8 +46,13 @@ public class Book implements Serializable{
 	@OneToMany(mappedBy = "bookReviewed", fetch = FetchType.EAGER)
 	private List<Review> reviews;
 	
+	@OneToMany(mappedBy = "bookRequested", fetch = FetchType.EAGER)
+	@Fetch(value = FetchMode.SUBSELECT)
+	private List<Exchange> exchanges;
+	
 	public Book() {
 		this.reviews = new ArrayList<>();
+		this.exchanges = new ArrayList<>();
 	}
 
 	public String getIsbn() {
@@ -167,4 +177,13 @@ public class Book implements Serializable{
 		this.nRated += 1;
 
 	}
+
+	public List<Exchange> getExchanges() {
+		return exchanges;
+	}
+
+	public void setExchanges(List<Exchange> exchanges) {
+		this.exchanges = exchanges;
+	}
+	
 }

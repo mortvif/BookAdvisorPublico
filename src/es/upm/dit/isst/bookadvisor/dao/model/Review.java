@@ -1,8 +1,9 @@
-package es.upm.dit.isst.bookadvisor.dao.model;
+	package es.upm.dit.isst.bookadvisor.dao.model;
 
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -12,6 +13,7 @@ public class Review implements Serializable {
 	
 	@Id
 	private String id;
+	@Column(columnDefinition = "TEXT")
 	private String review;
 	private Date createdAt;
 	
