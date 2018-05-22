@@ -38,12 +38,12 @@
     <main class="hoc container clear">
         <h1>Nuevo libro</h1>
 
-        <div class="one_half first">
+        <div class="one_third first">
 
-            <img class="imgl borderedbox inspace-5" src="images/portada.jpeg" alt="">
+            <img class="imgl borderedbox inspace-5" src="images/portada.jpeg" alt="" style="height:330px;width:240px; !important">
 
         </div>
-        <div class="one_half">
+        <div class="two_third">
             <%@include file="newbookform.jsp"%>
         </div>
 

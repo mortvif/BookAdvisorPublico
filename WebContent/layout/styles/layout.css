@@ -53,13 +53,36 @@ File: Layout CSS
 #pageintro article{display:block; max-width:60%;}
 #pageintro article .heading{margin-bottom:30px; font-size:42px;}
 #pageintro p {text-align: center;font-size: 25px; font-family: "Times New Roman";margin-bottom: 60px;}
+/* Profile
 
+--------------------*/
+img.profile{ width:100px; height:80px; border-radius:50%;}
+.modal {
+	
+	text-align:center;
+  padding: 0!important;
+}
 
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+nav.ofertas ul>li {margin-bottom:20px;}
 /* Content Area
 --------------------------------------------------------------------------------------------------------------- */
-.container{padding:80px 0; width: 100%;}
+.container{padding:50px 0; width: 100%;}
 .content img.caratula {
-	margin-right: 30px; margin-bottom: 10px;     box-shadow: 3px 3px 3px 1px #888888; height: 340px; width: 260px;
+	margin-right: 30px; margin-bottom: 10px;     box-shadow: 3px 3px 3px 1px #888888; height: 320px; width: 230px;
 }
 .container img.recomendados { box-shadow: 3px 3px 3px 1px #888888;
 	height: 250px; width: 190px; margin-bottom: 15px; margin-top: 15px;}
@@ -95,20 +118,21 @@ a.button {
 .container .content{}
 
 /* Comments */
-#comments {margin-top: 100px;}
-#comments ul{margin:0 0 40px 0; padding:0; list-style:none;}
-#comments li{margin:0 0 10px 0; padding:15px;}
-#comments .avatar{float:right; margin:0 0 10px 10px; padding:3px; border:1px solid;}
-#comments address{font-weight:bold;}
-#comments time{font-size:smaller;}
-#comments .comcont{display:block; margin:0; padding:0;}
-#comments .comcont p{margin:10px 5px 10px 0; padding:0;}
+.comments {margin-top: 100px;}
+.comments ul{margin:0 0 40px 0; padding:0; list-style:none;}
+.comments li{margin:0 0 10px 0; padding:15px;}
+.comments .avatar{float:right; margin:0 0 10px 10px; padding:0px; border:1px solid;border-radius:50%; width:70px; height:50px;}
+.comments .avatar img{width:70px; height:50px; border-radius:50%; }
+.comments address{font-weight:bold;}
+.comments time{font-size:smaller;}
+.comments .comcont{display:block; margin:0; padding:0;}
+.comments .comcont p{margin:10px 5px 10px 0; padding:0;}
 
-#comments form{display:block; width:100%;}
-#comments input, #comments textarea{width:100%; padding:10px; border:1px solid;}
-#comments textarea{overflow:auto;}
-#comments div{margin-bottom:15px;}
-#comments input[type="submit"], #comments input[type="reset"]{display:inline-block; width:auto; min-width:150px; margin:0; padding:8px 5px; cursor:pointer;}
+.comments form{display:block; width:100%;}
+.comments input, .comments textarea{width:100%; padding:10px; border:1px solid;}
+.comments textarea{overflow:auto;}
+.comments div{margin-bottom:15px;}
+.comments input[type="submit"], .comments input[type="reset"]{display:inline-block; width:auto; min-width:150px; margin:0; padding:8px 5px; cursor:pointer;}
 
 /* Sidebar */
 .container .sidebar{}
@@ -312,12 +336,12 @@ input:focus, textarea:focus, *:required:focus{border-color:#DFA94F;}
 
 
 /* Tables + Comments */
-table, th, td, #comments .avatar, #comments input, #comments textarea{border-color:#D7D7D7;}
-#comments input:focus, #comments textarea:focus, #comments *:required:focus{border-color:#DFA94F;}
+table, th, td, .comments .avatar, .comments input, .comments textarea{border-color:#D7D7D7;}
+.comments input:focus, .comments textarea:focus, .comments *:required:focus{border-color:#DFA94F;}
 th{color:#FFFFFF; background-color:#373737;}
-tr, #comments li, #comments input[type="submit"], #comments input[type="reset"]{color:inherit; background-color:#FBFBFB;}
-tr:nth-child(even), #comments li:nth-child(even){color:inherit; background-color:#F7F7F7;}
-table a, #comments a{background-color:inherit;}
+tr, .comments li, .comments input[type="submit"], .comments input[type="reset"]{color:inherit; background-color:#FBFBFB;}
+tr:nth-child(even), .comments li:nth-child(even){color:inherit; background-color:#F7F7F7;}
+table a, .comments a{background-color:inherit;}
 
 
 /* ------------------------------------------------------------------------------------------------------------ */
@@ -356,7 +380,7 @@ table a, #comments a{background-color:inherit;}
 	#breadcrumb{}
 
 	.container{}
-	#comments input[type="reset"]{margin-top:10px;}
+	.comments input[type="reset"]{margin-top:10px;}
 	.pagination li{display:inline-block; margin:0 5px 5px 0;}
 
 	#footer{}

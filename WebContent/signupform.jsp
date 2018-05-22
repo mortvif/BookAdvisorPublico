@@ -1,10 +1,10 @@
 <!-- Modal Become a member -->
-<form action="./signup" method="get" id="newmember">
+<form action="signup" method="post"  enctype="multipart/form-data" id="newmember">
     <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">X</span><span
                             class="sr-only">Cerrar</span></button>
                     <h4 class="modal-title" id="myModalLabel">Crear cuenta</h4>
                 </div>
@@ -20,6 +20,13 @@
                         <label class="control-label" for="emailinput">Email</label>
                         <input type="email" class="form-control" id="emailinput" aria-describedby="emailinput"
                                required="" name="email">
+                        <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                    </div>
+                    
+                   <div class="form-group has-feedback">
+                        <label class="control-label" for="fileinput">Foto de perfil</label>
+                        <input type="file" class="form-control" id="fileinput" aria-describedby="fileinput"
+                               required="" name="profilepic">
                         <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
                     </div>
                     

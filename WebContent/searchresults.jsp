@@ -58,11 +58,11 @@
 								</form>
 							</div>
 							<div class="two_third">
-								<h3>Título: ${book.getTitle()}</h3>
-								<h4>Autor: ${book.getAuthor()}</h4>
-								<p>ISBN: ${book.getIsbn()}</p>
-								<p>Editorial: ${book.getPublisher()}</p>
-								<p>Sinopsis: ${book.getSynopsis()}</p>
+								<p><b>Título:</b> ${book.getTitle()}</p>
+								<p><b>Autor:</b> ${book.getAuthor()}</p>
+								<p><b>ISBN:</b> ${book.getIsbn()}</p>
+								<p><b>Editorial:</b> ${book.getPublisher()}</p>
+<%-- 								<p><b>Sinopsis:</b> ${book.getSynopsis()}</p>--%>
 							</div>
 							</div>
 					</c:forEach>
